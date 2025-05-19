@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("This is home route");
 });
 
-app.use("/application", applicationRoutes);
+app.use("/applications", applicationRoutes);
 app.use("/properties", propertyRoutes);
 app.use("/leases", leaseRoutes);
 app.use("/tenants", authMiddleware(["tenant"]), tenantRoutes);
