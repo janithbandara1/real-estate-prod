@@ -8,7 +8,7 @@ const ApplicationCard = ({
   children,
 }: ApplicationCardProps) => {
   const [imgSrc, setImgSrc] = useState(
-    application.property.photoUrls?.[0] || "./placeholder.jpg"
+    application.property.photoUrls?.[0] || "/placeholder.jpg"
   );
 
   const statusColor =

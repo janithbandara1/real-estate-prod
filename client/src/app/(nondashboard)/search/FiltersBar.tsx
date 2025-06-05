@@ -1,4 +1,9 @@
-import { FiltersState, setFilters, setViewMode, toggleFiltersFullOpen } from "@/state";
+import {
+  FiltersState,
+  setFilters,
+  setViewMode,
+  toggleFiltersFullOpen,
+} from "@/state";
 import { useAppSelector } from "@/state/redux";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -74,17 +79,17 @@ const FiltersBar = () => {
           searchInput
         )}.json?access_token=${
           process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
-        }&fuzzyMatch-true`
+        }&fuzzyMatch=true`
       );
       const data = await response.json();
-      if (data.features && data.features.legnth > 0) {
+      if (data.features && data.features.length > 0) {
         const [lng, lat] = data.features[0].center;
         dispatch(
           setFilters({
             location: searchInput,
-            coordinates: [lng, lat]
+            coordinates: [lng, lat],
           })
-        )
+        );
       }
     } catch (err) {
       console.error("Error search location:", err);
@@ -95,6 +100,7 @@ const FiltersBar = () => {
     <div className="flex justify-between items-center w-full py-5">
       {/* Filters */}
       <div className="flex justify-between items-center gap-4 p-2">
+        {/* All Filters */}
         <Button
           variant="outline"
           className={cn(

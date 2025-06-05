@@ -12,7 +12,7 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      straggerChildren: 0.2,
+      staggerChildren: 0.2,
     },
   },
 };
@@ -45,7 +45,7 @@ const FeaturesSection = () => {
                 imageSrc={`/landing-search${3 - index}.png`}
                 title={
                   [
-                    "Trustworthy and Varified Listings",
+                    "Trustworthy and Verified Listings",
                     "Browse Rental Listings with Ease",
                     "Simplify Your Rental Search with Advanced",
                   ][index]
@@ -53,12 +53,12 @@ const FeaturesSection = () => {
                 description={
                   [
                     "Discover the best rental options with user reviews and ratings.",
-                    "Get access to user reviews and rations for a better understanding of rental options.",
+                    "Get access to user reviews and ratings for a better understanding of rental options.",
                     "Find trustworthy and verified rental listings to ensure a hassle-free experience.",
                   ][index]
                 }
                 linkText={["Explore", "Search", "Discover"][index]}
-                LinkHref={["/explore", "/search", "/discover"][index]}
+                linkHref={["/explore", "/search", "/discover"][index]}
               />
             </motion.div>
           ))}
@@ -73,13 +73,13 @@ const FeatureCard = ({
   title,
   description,
   linkText,
-  LinkHref,
+  linkHref,
 }: {
   imageSrc: string;
   title: string;
   description: string;
   linkText: string;
-  LinkHref: string;
+  linkHref: string;
 }) => (
   <div className="text-center">
     <div className="p-4 rounded-lg mb-4 flex items-center justify-center h-48">
@@ -88,13 +88,13 @@ const FeatureCard = ({
         width={400}
         height={400}
         className="w-full h-full object-contain"
-        alt="title"
+        alt={title}
       />
     </div>
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
     <p className="mb-4">{description}</p>
     <Link
-      href={LinkHref}
+      href={linkHref}
       className="inline-block border border-gray-300 rounded px-4 py-2 hover:bg-gray-100"
       scroll={false}
     >

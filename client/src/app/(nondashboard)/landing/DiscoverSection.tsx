@@ -9,7 +9,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      straggerChildren: 0.2,
+      staggerChildren: 0.2,
     },
   },
 };
@@ -30,7 +30,7 @@ const DiscoverSection = () => {
     >
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <motion.div variants={itemVariants} className="my-12 text-center">
-          <h2 className="text-3xl font-semibold loading-tight text-gray-800">
+          <h2 className="text-3xl font-semibold leading-tight text-gray-800">
             Discover
           </h2>
           <p className="mt-4 text-lg text-gray-600">
@@ -39,7 +39,7 @@ const DiscoverSection = () => {
           <p className="mt-2 text-gray-500 max-w-3xl mx-auto">
             Searching for your dream rental property has never been easier. With
             our user-friendly search feature, you can quickly find the perfect
-            home that meet all your needs. Start your search today and discover
+            home that meets all your needs. Start your search today and discover
             your dream rental property!
           </p>
         </motion.div>
@@ -90,7 +90,7 @@ const DiscoverCard = ({
         width={30}
         height={30}
         className="w-full h-full"
-        alt="title"
+        alt={title}
       />
     </div>
     <h3 className="mt-4 text-xl font-medium text-gray-800">{title}</h3>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import Image from "next/image";
@@ -73,7 +73,7 @@ const Navbar = () => {
                 router.push(
                   authUser.userRole?.toLowerCase() === "manager"
                     ? "/managers/newproperty"
-                    : "search"
+                    : "/search"
                 )
               }
             >
@@ -95,7 +95,7 @@ const Navbar = () => {
         </div>
         {!isDashboardPage && (
           <p className="text-primary-200 hidden md:block">
-            Discover your perfect rental apartment with our advanced serach
+            Discover your perfect rental apartment with our advanced search
           </p>
         )}
         <div className="flex items-center gap-5">

@@ -1,6 +1,15 @@
-import { Button } from "@/components/ui/button";
+import { FiltersState, initialState, setFilters } from "@/state";
+import { useAppSelector } from "@/state/redux";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { debounce } from "lodash";
+import { cleanParams, cn, formatEnumString } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
+import { AmenityIcons, PropertyTypeIcons } from "@/lib/constants";
+import { Slider } from "@/components/ui/slider";
 import {
   Select,
   SelectContent,
@@ -8,16 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { AmenityIcons, PropertyTypeIcons } from "@/lib/constants";
-import { cleanParams, cn, formatEnumString } from "@/lib/utils";
-import { FiltersState, initialState, setFilters } from "@/state";
-import { useAppSelector } from "@/state/redux";
-import { debounce } from "lodash";
-import { Search } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { Label } from "@/components/ui/label";
 
 const FiltersFull = () => {
   const dispatch = useDispatch();
@@ -70,10 +70,10 @@ const FiltersFull = () => {
           localFilters.location
         )}.json?access_token=${
           process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
-        }&fuzzyMatch-true`
+        }&fuzzyMatch=true`
       );
       const data = await response.json();
-      if (data.features && data.features.legnth > 0) {
+      if (data.features && data.features.length > 0) {
         const [lng, lat] = data.features[0].center;
         setLocalFilters((prev) => ({
           ...prev,
@@ -86,6 +86,7 @@ const FiltersFull = () => {
   };
 
   if (!isFiltersFullOpen) return null;
+
   return (
     <div className="bg-white rounded-lg px-4 h-full overflow-auto pb-10">
       <div className="flex flex-col space-y-6">

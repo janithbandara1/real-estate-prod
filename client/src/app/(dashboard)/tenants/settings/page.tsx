@@ -31,7 +31,7 @@ const TenantSettings = () => {
       initialData={initialData}
       onSubmit={handleSubmit}
       userType="tenant"
-    ></SettingsForm>
+    />
   );
 };
 

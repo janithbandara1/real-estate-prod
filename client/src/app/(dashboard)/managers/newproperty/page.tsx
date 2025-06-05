@@ -58,10 +58,11 @@ const NewProperty = () => {
       }
     });
 
-    formData.append("ManagerCognitoId", authUser.cognitoInfo.userId);
+    formData.append("managerCognitoId", authUser.cognitoInfo.userId);
 
     await createProperty(formData);
   };
+
   return (
     <div className="dashboard-container">
       <Header

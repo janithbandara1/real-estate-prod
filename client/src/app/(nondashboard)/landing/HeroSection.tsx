@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { setFilters } from "@/state";
 
 const HeroSection = () => {
-  const disptch = useDispatch();
+  const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
 
@@ -20,7 +20,7 @@ const HeroSection = () => {
       if (!trimmedQuery) return;
 
       const response = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox/places/${encodeURIComponent(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
           trimmedQuery
         )}.json?access_token=${
           process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
@@ -29,7 +29,7 @@ const HeroSection = () => {
       const data = await response.json();
       if (data.features && data.features.length > 0) {
         const [lng, lat] = data.features[0].center;
-        disptch(
+        dispatch(
           setFilters({
             location: trimmedQuery,
             coordinates: [lat, lng],
@@ -71,12 +71,13 @@ const HeroSection = () => {
             Explore our wide range of rental properties tailored to fit your
             lifestyle and needs!
           </p>
+
           <div className="flex justify-center">
             <Input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by city, naighborhood or address"
+              placeholder="Search by city, neighborhood or address"
               className="w-full max-w-lg rounded-none rounded-l-xl border-none bg-white h-12"
             />
             <Button
